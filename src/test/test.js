@@ -1,4 +1,4 @@
-import { Validator } from "../index";
+import { Validator } from '../index';
 
 test('name check', () => {
   const person = new Validator('Bob');

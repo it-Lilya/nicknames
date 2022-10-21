@@ -4,7 +4,19 @@ export class Validator {
   }
 
   validateUsername() {
-    const charMatch = /^[A-Za-z]*([A-za-z(\d{0,3})_-]*)[A-Za-z]$/;
-    return charMatch.test(this.name);
+    const charMatch = /^[A-Za-z]+([A-za-z\d/_-]*)+[A-Za-z]$/;
+    const characterValidation = charMatch.test(this.name);
+    let validationResult;
+    if (characterValidation === true) {
+      const digitValidation = /\d{4,4}/.test(this.name);
+      if (digitValidation === true) {
+        validationResult = ('Нельзя вводить более 3 цифр подряд');
+      } else {
+        validationResult = ('Данные верны');
+      }
+    } else {
+      validationResult = ('Ошибка в введенных данных');
+    }
+    return validationResult;
   }
 }
